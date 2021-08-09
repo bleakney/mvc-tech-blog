@@ -1,0 +1,23 @@
+* {
+    font-size: 16px;
+}
+
+.navbar-brand {
+    font-size: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+nav a {
+    font-family: 'Sedgwick Ave Display', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2rem
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.nav-item {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
