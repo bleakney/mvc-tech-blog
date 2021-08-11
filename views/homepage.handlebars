@@ -1,0 +1,21 @@
+<ul class="uk-list uk-list-divider">
+    {{#each posts}}
+    <li>
+        <article class="uk-article">
+
+    <h1 class="uk-article-title"><a class="uk-link-reset" href="/post/{{id}}">{{title}}</a></h1>
+
+    <p class="uk-article-meta">Written by <a href="/user/{{user/username}}">{{user.username}}</a> on {{created_at}}.</p>
+
+    <p>{{content}}</p>
+
+    <div class="uk-grid-small uk-child-width-auto" uk-grid>
+        <div>
+            <a class="uk-button uk-button-text" href="/post/{{id}}">{{comments.length}} Comments</a>
+        </div>
+    </div>
+
+</article>
+    </li>
+    {{/each}}
+</ul>
