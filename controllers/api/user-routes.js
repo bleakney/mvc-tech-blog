@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models");
 
-// get all user info
+// get all users 
 router.get("/", (req, res) => {
   User.findAll({
     attributes: { exclude: ["password"] },
@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// get one unique user's info
+// get a specifed user's info
 router.get("/:id", (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
@@ -48,6 +48,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// create a new user
 router.post("/", (req, res) => {
   // expects {"username": "", "email": "", "password": ""}
   User.create({
