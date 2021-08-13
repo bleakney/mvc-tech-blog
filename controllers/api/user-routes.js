@@ -56,15 +56,15 @@ router.post("/", (req, res) => {
     email: req.body.email,
     password: req.body.password,
   })
-    // .then(userData => {
-    //     req.session.save(() => {
-    //         req.session.user_id = userData.id;
-    //         req.session.username = userData.username;
-    //         req.session.loggedIn = true;
+    .then(userData => {
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.username = userData.username;
+            req.session.loggedIn = true;
 
-    //         res.json(userData)
-    //     })
-    // })
+            res.json(userData)
+        })
+    })
     .then((userData) => {
       res.json(userData);
     })
@@ -74,9 +74,46 @@ router.post("/", (req, res) => {
     });
 });
 
-// LOGIN POST REQ GOES HERE
+// LOGIN POST REQ
+router.post('/login', (req, res) => {
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  })
+  .then(userData => {
+    if(!userData) {
+      res.status(400).json({ message: "No user found with that email address!" });
+      return;
+    }
 
-// LOGOUT POST REQ GOES HERE
+    const validPassword = userData.checkPassword(req.body.password);
+    if(!validPassword) {
+      res.status(400).json({ message: "Incorrect password!" });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.username = userData.username;
+      req.session.loggedIn = true;
+
+      res.json({ user: userData, message: 'You are now logged in!'});
+    });
+  });
+});
+
+// LOGOUT POST REQ
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
 
 // update one user's data by id
 router.put('/:id', (req, res) => {

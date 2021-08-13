@@ -6,23 +6,22 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const session = require('express-session');
-const SequelizeStore = require('connect-session-sequelize');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// // set up session persistence
-// const sess = {
-//     secret: "grandma's chocolate chip cookies",
-//     cookie: {},
-//     resave: false,
-//     saveUninitialized: true,
-//     store: new SequelizeStore({
-//         db: sequelize
-//     })
-// };
+const sess = {
+    secret: 'Super secret secret',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
+  };
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// app.use(session(sess));
+app.use(session(sess));
 
 // express middleware
 app.use(express.json());
@@ -37,5 +36,6 @@ app.set('view engine', 'handlebars');
 app.use(routes);
 
 // turn on connection to db and server
-    app.listen(PORT, () => console.log('Now listening!'));
-
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
+  });
