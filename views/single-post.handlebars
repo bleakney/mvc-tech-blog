@@ -11,6 +11,15 @@
             <a class="uk-button uk-button-text" href="/post/{{id}}">{{post.comments.length}} Comments</a>
         </div>
     </div>
+ {{!-- OPTIONALLY RENDER COMMENT FORM IF LOGGED IN --}}
+ {{#if loggedIn}}
+    <form class="comment-form uk-text-center">
+    <div class="uk-margin">
+            <textarea class="uk-textarea" name="comment-body" rows="5" placeholder="Leave a comment"></textarea>
+        </div>
+      <button class="uk-button uk-button-default uk-width-1-3" type="submit">SUBMIT</button>
+</form>
+{{/if}}
 
 </article>
 {{#each post.comments}}
@@ -31,9 +40,7 @@
 </article>
 {{/each}}
 
-<form class="comment-form uk-text-center">
-    <div class="uk-margin">
-            <textarea class="uk-textarea" name="comment-body" rows="5" placeholder="Leave a comment"></textarea>
-        </div>
-      <button class="uk-button uk-button-default uk-width-1-3" type="submit">SUBMIT</button>
-</form>
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}
+
