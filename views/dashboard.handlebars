@@ -1,0 +1,42 @@
+<section>
+    <h2 class="dashboard">Create A New Post</h2>
+<form class="new-post-form">
+    <div class="uk-margin">
+        <label for="new-post-title" class="uk-form-label">Title</label>
+            <textarea class="uk-textarea" name="new-post-title" rows="1" placeholder=""></textarea>
+        </div>
+        <div class="uk-margin">
+        <label for="new-post-content" class="uk-form-label">Content</label>
+            <textarea class="uk-textarea" name="new-post-content" rows="5" placeholder=""></textarea>
+        </div>
+      <button class="uk-button uk-button-default uk-width-1-3" type="submit">SUBMIT</button>
+      </section>
+
+
+{{#if posts.length}}
+<section class="dashboard-posts">
+    <h2>Your Posts</h2>
+    <ul class="uk-list uk-list-divider">
+    {{#each posts}}
+    <li class="dashboard-list">
+        <article class="uk-article">
+
+    <h1 class="uk-article-title"><a class="uk-link-reset" href="/post/{{id}}">{{title}}</a></h1>
+
+    <p class="uk-article-meta">Written by <a href="/user/{{user/username}}">{{user.username}}</a> on {{created_at}}.</p>
+
+    <p>{{content}}</p>
+
+    <div class="uk-grid-small uk-child-width-auto" uk-grid>
+        <div>
+            <a class="uk-button uk-button-text" href="/post/{{id}}">{{comments.length}} Comments</a>
+        </div>
+    </div>
+
+</article>
+    </li>
+    {{/each}}
+</ul>
+</section>
+{{/if}}
+<script src="/javascript/add-post.js"></script>

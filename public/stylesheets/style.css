@@ -3,7 +3,7 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Dokdo', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'DM Mono', monospace;
 }
 
 .navbar-brand {
@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 nav a {
-    font-family: 'Dokdo', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'DM Mono', monospace;
     font-size: 2rem
 }
 
@@ -50,4 +50,17 @@ main {
 
 .uk-comment, .comment-form {
     margin-top: 2rem;
+}
+
+.new-post-form, .dashboard {
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.dashboard-posts {
+    margin: 4rem 4rem 0 4rem;
+}
+
+.dashboard-list {
+    padding-bottom: 2rem;
 }
