@@ -7,10 +7,11 @@ require('dotenv').config()
 let sequelize;
 
 
+
 // use credentials through jawsdb if accessing heroku deployment
 if (process.env.JAWSDB_URL) {
     sequelize = new Sequelize(process.env.JAWSDB_URL);
-    // seed database
+     // seed database
     seedAll();
 } else {
     sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {
