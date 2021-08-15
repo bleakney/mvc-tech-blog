@@ -75,7 +75,7 @@ router.post("/", (req, res) => {
 });
 
 // update a post's data by id
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', (req, res) => {
      // expects {"title": "", "content": "", "user_id": ""}
      Post.update(req.body, {
          where: {
@@ -96,7 +96,7 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 // delete a post by id
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id
