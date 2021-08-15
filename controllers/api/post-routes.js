@@ -60,7 +60,7 @@ router.get("/:id", (req, res) => {
 });
 
 // create a new post
-router.post("/", withAuth, (req, res) => {
+router.post("/", (req, res) => {
     // expects {"title": "", "content": "", "user_id": ""}
     Post.create({
         title: req.body.title,
