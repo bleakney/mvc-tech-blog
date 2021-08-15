@@ -1,9 +1,13 @@
 const Sequelize = require('sequelize');
+const seedAll = require('../seeds/index');
 
 require('dotenv').config()
 
 // create connection to our database, pass in mysql credentials
 let sequelize;
+
+// seed database
+seedAll();
 
 // use credentials through jawsdb if accessing heroku deployment
 if (process.env.JAWSDB_URL) {
