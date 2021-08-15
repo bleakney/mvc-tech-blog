@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const seedAll = require('./seeds/index');
 
 const sess = {
     secret: 'Super secret secret',
@@ -37,5 +38,6 @@ app.use(routes);
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
+  seedAll();
     app.listen(PORT, () => console.log('Now listening'));
   });
