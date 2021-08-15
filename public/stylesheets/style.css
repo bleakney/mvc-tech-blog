@@ -4,6 +4,7 @@
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'DM Mono', monospace;
+    font-weight: bold;
 }
 
 .navbar-brand {
@@ -63,4 +64,9 @@ main {
 
 .dashboard-list {
     padding-bottom: 2rem;
+}
+
+.uk-article-title a {
+    font-weight: bold;
+    font-size: 1.5rem;
 }
