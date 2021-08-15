@@ -1,9 +1,6 @@
 const Sequelize = require('sequelize');
-const seedAll = require('../seeds/index');
 
 require('dotenv').config()
-
-seedAll();
 
 // create connection to our db
 const sequelize = process.env.JAWSDB_URL
