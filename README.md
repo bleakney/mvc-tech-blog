@@ -1,4 +1,4 @@
-# E-Commerce Backend
+# MVC Tech Blog
   [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 
   ## Table of Contents
